@@ -1,10 +1,29 @@
-<h2>Search Pokemon</h2>
-<form action="/pokemon" method="GET">
-<label>Name</label>
-<input type="text" name="name" value="<%= searchOptions.name %>">
-<button type="submit">Search</button>
-</form>
-<br>
-<% pokemon.forEach(p =>{ %>
-    <div><%= p.name %></div>
-    <% }) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Pokemonanza</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">List of Pokemon</h1>
+        <a href="/pokemon/new" class="btn btn-success">Add Pokemon</a>
+
+        <% pokemon.forEach(pokemon=>{ %>
+            <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">   <%= pokemon.title %></h4>
+                <div class="card-subtitle text-muted mb-2">
+                    <%= pokemon.createdAt.toLocaleDateString() %>
+                </div>
+                <div class="card-text mb-2"><%= pokemon.description %></div>
+            </div>
+             
+            </div>
+        <%}) %>
+    </div>
+</body>
+</html>
