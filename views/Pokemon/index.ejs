@@ -1,0 +1,10 @@
+<h2>Search Pokemon</h2>
+<form action="/pokemon" method="GET">
+<label>Name</label>
+<input type="text" name="name" value="<%= searchOptions.name %>">
+<button type="submit">Search</button>
+</form>
+<br>
+<% pokemon.forEach(p =>{ %>
+    <div><%= p.name %></div>
+    <% }) %>
