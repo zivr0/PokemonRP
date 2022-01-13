@@ -21,11 +21,14 @@
                 </div>
                 <div class="card-text mb-2"><%= pokemon.description %></div>
                 <div class="mb-3"><img src="<%=pokemon.url%>" width="100" alt=""></div>
-                <a href="pokemon/<%= pokemon.id %>" class="btn btn-primary">Read More</a>
+                <a href="pokemon/<%= pokemon.slug %>" class="btn btn-primary">Read More</a>
+                <form action="pokemon/<%= pokemon.id %>?_method=DELETE" method="POST" class="d-inline">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
             </div>
              
             </div>
-        <%}) %>
+        <% }) %>
     </div>
 </body>
 </html>

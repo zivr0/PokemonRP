@@ -6,8 +6,8 @@ router.get('/new', (req, res) => {
   res.render('pokemon/new', { pokemon: new Pokemon() })
 })
 
-router.get('/:id', async (req, res) => {
-  const pokemon = await Pokemon.findById(req.params.id)
+router.get('/:slug', async (req, res) => {
+  const pokemon = await Pokemon.findOne({ slug: req.params.slug })
   if (pokemon == null) res.redirect('/')
   res.render('pokemon/show', { pokemon: pokemon })
 })
@@ -20,10 +20,15 @@ router.post('/', async (req, res) => {
   })
   try {
     pokemon = await pokemon.save()
-    res.redirect(`/pokemon/${pokemon.id}`)
+    res.redirect(`/pokemon/${pokemon.slug}`)
   } catch (e) {
     console.log(e)
     res.render('pokemon/new', { pokemon: pokemon })
   }
 })
+router.delete('/:id', async (req, res) => {
+  await Pokemon.findByIdAndDelete(req.params.id)
+  res.redirect('/')
+})
+
 module.exports = router
