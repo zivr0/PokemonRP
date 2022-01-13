@@ -11,6 +11,13 @@ const app = express()
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
+db.on('error', error => {
+  console.error(error)
+})
+
+db.once('open', () => {
+  console.log('Connected to Mongoose')
+})
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
@@ -21,4 +28,4 @@ app.get('/', async (req, res) => {
   res.render('pokemon/index', { pokemon })
 })
 
-app.listen(process.env.PORT || 5000)
+app.listen(process.env.PORT || 3000)
