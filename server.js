@@ -4,22 +4,18 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express')
 const mongoose = require('mongoose')
+const Pokemon = require('./models/pokemon')
 const pokemonRouter = require('./routes/pokemon')
 const app = express()
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
-
+app.use(express.urlencoded({ extended: false }))
 app.set('view engine', 'ejs')
 app.use('/pokemon', pokemonRouter)
-app.get('/', (req, res) => {
-  const pokemon = [
-    {
-      title: 'Test Pokemon',
-      createdAt: new Date(),
-      description: 'Test Description',
-    },
-  ]
+
+app.get('/', async (req, res) => {
+  const pokemon = await Pokemon.find().sort({ createdAt: 'desc' })
   res.render('pokemon/index', { pokemon })
 })
 

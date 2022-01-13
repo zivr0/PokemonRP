@@ -1,18 +1,18 @@
 <div class="form-group">
-    <label for="title">Title</label>
-    <input required type="text" name="title" id="title" class="form-control">
+    <label for="name">Name</label>
+    <input required type="text" value="<%=pokemon.name %>" name="name" id="name" class="form-control">
 
 </div>
 
 <div class="form-group">
-    <label for="title">Description</label>
-    <textarea name="description" id="description" class="form-control" ></textarea>
+    <label for="url">Url</label>
+    <input required type="text" value="<%=pokemon.url %>" name="url" id="url" class="form-control">
 
 </div>
 
 <div class="form-group">
-    <label for="title">Markdown</label>
-    <textarea name="markdown" id="markdown" class="form-control" ></textarea>
+    <label for="description">Description</label>
+    <textarea name="description" id="description" value="<%= pokemon.description %>" class="form-control" ></textarea>
 
 </div>
 <a href="/" class="btn btn-secondary">Cancel</a>
