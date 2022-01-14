@@ -26,7 +26,7 @@ app.use('/pokemon', pokemonRouter)
 
 app.get('/', async (req, res) => {
   const pokemon = await Pokemon.find().sort({ createdAt: 'desc' })
-  res.render('Pokemon/index', { pokemon })
+  res.render('pokemon/index', { pokemon })
 })
 
 app.listen(process.env.PORT || 3000)
