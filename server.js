@@ -21,6 +21,7 @@ db.once('open', () => {
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
 app.use('/pokemon', pokemonRouter)
 
 app.get('/', async (req, res) => {
